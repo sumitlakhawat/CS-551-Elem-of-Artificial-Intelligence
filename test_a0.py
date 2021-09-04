@@ -129,18 +129,19 @@ def check_solution1(mapX,dist_key):
 def check_solution2(mapX,sol_exist_key,n):
 	solved_map,sol_exist=arrange_pichus.solve(mapX,n)
 	import numpy as np
-	solved_map=np.array(solved_map)
-	mapX=np.array(mapX)
-	assert solved_map.shape==mapX.shape,"Shape of maps does not match"
-	assert len(set([c for row in solved_map for c in row])-set(['.','X','p','@']))==0,"Map contains invalid characters"
 	assert sol_exist==sol_exist_key,"Wrong solution"
-	#replacing p on both maps
-	solved_map_p=np.array([[c.replace('p','.') for c in row] for row in solved_map])
-	mapX_p=np.array([[c.replace('p','.') for c in row] for row in mapX])
-	assert np.array_equal(solved_map_p,mapX_p),"The buildings in the original map replaced"
-	p_locs=[(row,col) for col in range(solved_map.shape[1]) for row in range(solved_map.shape[0]) if solved_map[row,col]=='p']
-	assert len(p_locs)==n,"Wrong number of pichus placed"
-	assert seekthehidden(solved_map,p_locs)==True,"Pichus can see each other"
+	if sol_exist_key==True:
+		solved_map=np.array(solved_map)
+		mapX=np.array(mapX)
+		assert solved_map.shape==mapX.shape,"Shape of maps does not match"
+		assert len(set([c for row in solved_map for c in row])-set(['.','X','p','@']))==0,"Map contains invalid characters"
+		#replacing p on both maps
+		solved_map_p=np.array([[c.replace('p','.') for c in row] for row in solved_map])
+		mapX_p=np.array([[c.replace('p','.') for c in row] for row in mapX])
+		assert np.array_equal(solved_map_p,mapX_p),"The buildings in the original map replaced"
+		p_locs=[(row,col) for col in range(solved_map.shape[1]) for row in range(solved_map.shape[0]) if solved_map[row,col]=='p']
+		assert len(p_locs)==n,"Wrong number of pichus placed"
+		assert seekthehidden(solved_map,p_locs)==True,"Pichus can see each other"
 
 def load_maps():
 	maps=[]
@@ -148,7 +149,7 @@ def load_maps():
 		with open(name,"r") as file:
 			lines=file.read().splitlines()
 			dist=int(lines[0])
-			sol_exist=bool(lines[1])
+			sol_exist=(lines[1] in ['true','True','TRUE'])
 			n=int(lines[2])
 			mapX=[list(line) for line in lines[3:]]
 			maps.append((mapX,dist,sol_exist,n))
