@@ -127,7 +127,7 @@ def check_solution1(mapX,dist_key):
 
 #Part 2 needs to return the 2d_list: map,bool: if_solution_exists
 def check_solution2(mapX,sol_exist_key,n):
-	solved_map,sol_exist=arrange_pichus.solve(mapX,0)
+	solved_map,sol_exist=arrange_pichus.solve(mapX,n)
 	import numpy as np
 	solved_map=np.array(solved_map)
 	mapX=np.array(mapX)
