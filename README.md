@@ -13,7 +13,7 @@ Now, we call the find_path, which takes input path list variable returned from f
 
 #For the inputs when there is no solution-
 
-When there is no solution, it goes into infinte loop as the fringe keeps appending and the path distance keep increasing. To avoid that, I have written a condition that if the path distance from 'p' to '@' goes beyond the maximun distance that is possible then return -1 and break the loop. In any given matrix of (N*M), the maximum distance that we can travel will be N*M. The maximum distance in any matrix will be when you traverse all the points in the matrix. That will be equal to N*M. So no distance between two points in any matrix can be more than that. So if the traversed distance variable in our code, which is curr_dist, goes beyond N*M, we break the loop as there were no solution possible.
+When there is no solution, it goes into infinte loop as the fringe keeps appending and the path distance keep increasing. To avoid that, I have written a condition that if the path distance from 'p' to '@' goes beyond the maximun distance that is possible then return -1 and break the loop. In any given matrix of (NXM), the maximum distance that we can travel will be NXM. The maximum distance in any matrix will be when you traverse all the points in the matrix. That will be equal to N*M. So no distance between two points in any matrix can be more than that. So if the traversed distance variable in our code, which is curr_dist, goes beyond NXM, we break the loop as there were no solution possible.
 
 
 ---------------------------------------------------------------------------------------------------------------
