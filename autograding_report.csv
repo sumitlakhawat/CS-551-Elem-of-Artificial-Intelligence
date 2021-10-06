@@ -1,0 +1,27 @@
+section,residential
+teamname,slakhawa
+commit used,af3f865bed2996f0935ab81a196ef5f55cbe917f
+commit date,2021-09-17 23:36:00
+test_question1_case1_points,10
+test_question1_case1_status,passed
+test_question1_case2_points,10
+test_question1_case2_status,passed
+test_question1_case3_points,10
+test_question1_case3_status,passed
+test_question1_case4_points,10
+test_question1_case4_status,passed
+test_question1_case5_points,10
+test_question1_case5_status,passed
+test_question2_case1_points,10
+test_question2_case1_status,passed
+test_question2_case2_points,10
+test_question2_case2_status,passed
+test_question2_case3_points,10
+test_question2_case3_status,passed
+test_question2_case4_points,10
+test_question2_case4_status,passed
+test_question2_case5_points,10
+test_question2_case5_status,passed
+Total,100
+Late Penalty,0
+Total Autograding,100

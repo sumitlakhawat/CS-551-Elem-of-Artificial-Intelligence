@@ -1,6 +1,6 @@
 20
-True
-7
+False
+8
 ....XXX
 .X.X...
 .X..X..

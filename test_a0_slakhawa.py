@@ -6,6 +6,7 @@ import pandas as pd
 import re
 import os
 import pytest
+import copy
 
 def diagonals(L):
     """
@@ -117,7 +118,7 @@ def seekthehidden(mapX,p_locs):
 def check_solution1(mapX,dist_key):
 	regex_moves=re.compile(r'^[UDRLudrl]+$')
 	#function to search
-	dist,moves=route_pichu.search(mapX)
+	dist,moves=route_pichu.search(copy.deepcopy(mapX))
 	assert type(dist)==int,"Distance is not an integer"
 	assert dist==dist_key,"Wrong solution"
 	if dist>-1:
@@ -127,7 +128,7 @@ def check_solution1(mapX,dist_key):
 
 #Part 2 needs to return the 2d_list: map,bool: if_solution_exists
 def check_solution2(mapX,sol_exist_key,n):
-	solved_map,sol_exist=arrange_pichus.solve(mapX,n)
+	solved_map,sol_exist=arrange_pichus.solve(copy.deepcopy(mapX),n)
 	import numpy as np
 	assert sol_exist==sol_exist_key,"Wrong solution"
 	if sol_exist_key==True:
@@ -145,7 +146,7 @@ def check_solution2(mapX,sol_exist_key,n):
 
 def load_maps():
 	maps=[]
-	for name in ['map1.txt','map2.txt']:
+	for name in ['map1.txt','map2.txt','map3.txt','map4.txt','map5.txt']:
 		with open(name,"r") as file:
 			lines=file.read().splitlines()
 			dist=int(lines[0])
@@ -155,27 +156,66 @@ def load_maps():
 			maps.append((mapX,dist,sol_exist,n))
 	return maps
 
-time_ = 300
-@pytest.mark.timeout(time_)
+time1_ = 300
+time2_ = 600
+time3_ = 900
+time4_ = 1200
+@pytest.mark.timeout(time1_)
 def test_question1_case1():
 	maps=load_maps()
 	mapX,dist_key,_,_=maps[0]
 	check_solution1(mapX,dist_key)
 
-@pytest.mark.timeout(time_)
+@pytest.mark.timeout(time1_)
 def test_question2_case1():
 	maps=load_maps()
 	mapX,_,sol_exist_key,n=maps[0]
 	check_solution2(mapX,sol_exist_key,n)
 
-@pytest.mark.timeout(time_)
+@pytest.mark.timeout(time1_)
 def test_question1_case2():
 	maps=load_maps()
 	mapX,dist_key,_,_=maps[1]
 	check_solution1(mapX,dist_key)
 
-@pytest.mark.timeout(time_)
+@pytest.mark.timeout(time1_)
 def test_question2_case2():
 	maps=load_maps()
 	mapX,_,sol_exist_key,n=maps[1]
+	check_solution2(mapX,sol_exist_key,n)
+
+@pytest.mark.timeout(time1_)
+def test_question1_case3():
+	maps=load_maps()
+	mapX,dist_key,_,_=maps[2]
+	check_solution1(mapX,dist_key)
+
+@pytest.mark.timeout(time2_)
+def test_question2_case3():
+	maps=load_maps()
+	mapX,_,sol_exist_key,n=maps[2]
+	check_solution2(mapX,sol_exist_key,n)
+
+@pytest.mark.timeout(time3_)
+def test_question1_case4():
+	maps=load_maps()
+	mapX,dist_key,_,_=maps[3]
+	check_solution1(mapX,dist_key)
+
+@pytest.mark.timeout(time3_)
+def test_question2_case4():
+	maps=load_maps()
+	mapX,_,sol_exist_key,n=maps[3]
+	check_solution2(mapX,sol_exist_key,n)
+
+@pytest.mark.timeout(time3_)
+def test_question1_case5():
+	maps=load_maps()
+	mapX,dist_key,_,_=maps[4]
+	check_solution1(mapX,dist_key)
+
+@pytest.mark.timeout(time4_)
+def test_question2_case5():
+	maps=load_maps()
+	mapX,_,sol_exist_key,n=maps[4]
 	check_solution2(mapX,sol_exist_key,n)
