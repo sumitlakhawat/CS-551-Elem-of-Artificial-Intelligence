@@ -1,6 +1,6 @@
 ## Part 1: Navigation - 
 
-#Code when the solution exists-
+# Code when the solution exists-
 
 In route_pichu.py, we read the input file and convert the file into list of characters. Now we find the location(coordinates) of pichu given in the map and we put the location and the distance travelled from this location in a fringe. The fringe here used is a Queue where each element in that is combination of current state and distance travelled from pichu to this state. Now pop the first element of the fringe and check all the possible states from that element. Possible directions we can go are up, down, right and left only if that direction has a '.' or '@' in it. All the possible states we append in the fringe if it is not present already. We keep doing this till the fringe is not empty or if we stumble upon '@' in our fringe. We return the path and distance travelled when we encounter '@'.
 
@@ -11,7 +11,7 @@ In find_key function, I'm checking the location of '@', which is stored in 'dest
 Now, we call the find_path, which takes input path list variable returned from find_key function. This function will give us the path in desired format. Since the path list we got was in reverse order, we call the reverse() function on it and then traverse it to convert it to letter format. For that, we check the x and y coordinated of elements next to each other in the list. If the x coordinate of ith element is less than x coordinate of (i+1)th element, that means we have travelled in the right direction, so we append 'R' to the letter_path variable and letter 'L' for vice versa. Similarly, if y coordinate of ith element is greater than (i+1)th coordinate, then we have travelled upwards, so we append 'U' and for vice versa, we append letter 'D'. We return this letter_path.
 
 
-#For the inputs when there is no solution-
+# For the inputs when there is no solution-
 
 When there is no solution, it goes into infinte loop as the fringe keeps appending and the path distance keep increasing. To avoid that, I have written a condition that if the path distance from 'p' to '@' goes beyond the maximun distance that is possible then return -1 and break the loop. In any given matrix of (NXM), the maximum distance that we can travel will be NXM. The maximum distance in any matrix will be when you traverse all the points in the matrix. That will be equal to N*M. So no distance between two points in any matrix can be more than that. So if the traversed distance variable in our code, which is curr_dist, goes beyond NXM, we break the loop as there were no solution possible.
 
@@ -21,7 +21,7 @@ When there is no solution, it goes into infinte loop as the fringe keeps appendi
 
 ## Part 2: Hide-and-seek -
 
-#Code when the solution exists
+# Code when the solution exists
 
 In arrange_pichus.py, we take 2 inputs, map file and number of pichus and we convert the map file into list of characters. Here we take a fringe which is a list of states where each state is the next successor state. 
 
@@ -44,6 +44,6 @@ Now, if all these 3 functions return True, that means the point satisfies all th
 And once, we reach the required number of 'p', we return the Map.
 
 
-#When we try to insert n number of 'p' but only (n-1) are possible
+# When we try to insert n number of 'p' but only (n-1) are possible
 
 In this case, no solution exists. So to find that, we realize that once the while loop iterates for (n-1) number of 'p', there are no more positions left in the map where it can insert more 'p'. So there are no more addition to the fringe and the while loop runs till we pop all the elements in the fringe. So once the fringe is empty, we know that there is no solution possible, so we return False.
