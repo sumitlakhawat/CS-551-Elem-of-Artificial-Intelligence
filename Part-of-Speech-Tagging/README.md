@@ -26,7 +26,7 @@
     - Computed different probabilities:- Initial, Transition and Emission.
     - Used the Bayes NET used for HMM.
     - Now started computing the Viterbi table, starting with initialising first column probabilities(containing all possible POS for first word) as Initial_probability.
-    - For the next iteration **t**, for each POS tag computed V[t-1][pos] + Transition[pos(t-1)][pos(t)] for next word. Get the minimum of this value and assign previous pos in which table and assign V[t] as V[t-1][pos] + Transition[pos(t-1)][pos(t)] + Emission[word][pos(t)].
+    - For the next iteration **t**, for each POS tag computed V[t-1][pos] + Transition[pos(t-1)][pos(t)] for next word. Get the minimum of this value and assign previous pos in which table and assign V[t] as V[t-1][pos] + Transition[pos(t-1)][pos(t)] + Emission[word][pos(t)]. 
     - Keep iterating the process till the last word of test sentence.
     - Get the min POS of all the POS prob values for last word and start back track from last POS using which table.
     - This will give us expected sequence of POS for given sentence.
